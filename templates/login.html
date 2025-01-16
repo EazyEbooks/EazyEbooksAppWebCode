@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="../static/css/login.css">
+    <title>EazyEbooks - Login</title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+    <div class="login-form">
+        <h2 class="login-heading">Log in</h2>
+        <div class="bottom-form">
+            <form action="/login" method="post">
+                <div class="input-field-with-icon">
+                    <ion-icon name="person" class="form-icon"></ion-icon>
+                    <input type="email" name="email" class="form-inp" placeholder=" Email">
+                </div>
+                <div class="input-field-with-icon">
+                    <ion-icon name="lock-closed" class="form-icon"></ion-icon>
+                    <input type="password" name="password" class="form-inp" placeholder=" Password">
+                </div>
+
+                <a href="/forgot-password" class="forgot-password">Forgot password?</a>
+    
+                <button type="submit" class="login-btn">Login</button>
+
+                <a href="/register" class="forgot-password">Dont have an account? Register here.</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

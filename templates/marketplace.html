@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-8875422219223826">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/marketplace.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="../static/css/responsive.css">
+    <title>EazyEbooks - Marketplace</title>
+</head>
+<body>
+    <article>
+        <p class="sale-bar">SUPER SALE <ion-icon name="flash-outline" class="sale-icon"></ion-icon> Upto 95% Discount</p>
+        <div class="marketplace-container">
+            <div class="side-categories-bar" id="side-categories-bar">
+                <h2 class="product-categories-text">Product Categories</h2>
+                <div class="degree-category">
+                    <h2 class="degree-heading">B.Ed</h2>
+                    <div class="sub-degree-container">
+                        <ul class="degree-sub-category-list">
+                            <li class="sub-category-element"><a href="#" class="category-bar-link" data-degree="B.Ed" data-university="Ranchi University"><p>Ranchi University</p><ion-icon name="play-outline" class="sub-category-icon"></ion-icon></a></li>
+                        </ul>
+                    </div>
+                    <div class="sub-degree-container">
+                        <ul class="degree-sub-category-list">
+                            <li class="sub-category-element"><a href="#" class="category-bar-link" data-degree="B.Ed" data-university="BBMKU University"><p>BBMKU University</p><ion-icon name="play-outline" class="sub-category-icon"></ion-icon></a></li>
+                        </ul> 
+                    </div>
+                    <div class="sub-degree-container">
+                        <ul class="degree-sub-category-list">
+                            <li class="sub-category-element"><a href="#" class="category-bar-link" data-degree="B.Ed" data-university="AKU University"><p>AKU University</p><ion-icon name="play-outline" class="sub-category-icon"></ion-icon></a></li>
+                        </ul> 
+                    </div>
+                    <div class="sub-degree-container">
+                        <ul class="degree-sub-category-list">
+                            <li class="sub-category-element"><a href="#" class="category-bar-link" data-degree="B.Ed" data-university="VBU University"><p>VBU University</p><ion-icon name="play-outline" class="sub-category-icon"></ion-icon></a></li>
+                        </ul> 
+                    </div>
+                    <div class="sub-degree-container">
+                        <ul class="degree-sub-category-list">
+                            <li class="sub-category-element"><a href="#" class="category-bar-link" data-degree="B.Ed" data-university="Patliputra University"><p>Patliputra University</p><ion-icon name="play-outline" class="sub-category-icon"></ion-icon></a></li>
+                        </ul> 
+                    </div>
+                </div>
+                <div class="degree-category">
+                    <h2 class="degree-heading">D.EL.ed</h2>
+                    <div class="sub-degree-container">
+                        <ul class="degree-sub-category-list">
+                            <li class="sub-category-element"><a href="#" class="category-bar-link" data-degree="D.EL.ED" data-year="1st"><p>1<sup>st</sup> Year</p><ion-icon name="play-outline" class="sub-category-icon"></ion-icon></a></li>
+                        </ul> 
+                    </div>
+                    <div class="sub-degree-container">
+                        <ul class="degree-sub-category-list">
+                            <li class="sub-category-element"><a href="#" class="category-bar-link" data-degree="D.EL.ED" data-year="2nd"><p>2<sup>nd</sup> Year</p><ion-icon name="play-outline" class="sub-category-icon"></ion-icon></a></li>
+                        </ul> 
+                    </div>
+                </div>
+                <div class="degree-category">
+                    <h2 class="degree-heading">B.Ba</h2>
+                    <div class="sub-degree-container">
+                        <ul class="degree-sub-category-list">
+                            <li class="sub-category-element"><a href="#" class="category-bar-link" data-degree="B.Ed" data-university="AK University"><p>AK University</p><ion-icon name="play-outline" class="sub-category-icon"></ion-icon></a></li>
+                        </ul> 
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="hamburger-menu" id="hamburger-menu">
+                    <p class="filter-burger"><ion-icon name="menu-outline" class="burger-icon"></ion-icon> Apply Filters</p>
+                </div>
+                <h2 class="course-heading">
+                    {% if degree and university %}
+                        {{ degree }} - {{ university }}
+                    {% elif degree and year %}
+                        {{ degree }} - {{ year }} Year
+                    {% else %}
+                        All Categories
+                    {% endif %}
+                </h2>
+
+                <div class="book-view-container" id="book-view-container">
+                    {% if ebook_documents %}
+                        {% for single_ebook_document in ebook_documents %}
+                            <div class="book-card-container">
+                                <div class="book-card">
+                                    <a href="{{ url_for('marketplace.BuyEbook', ebook_id=single_ebook_document['document_id']) }}" class="book-link">
+                                        <img src="{{ single_ebook_document['cover_image_path_url'] }}" alt="" class="book-cover-page-image">
+                                        <p class="book-name">{{ single_ebook_document["name"] }}</p>
+                                        <div class="price-container">
+                                            <p class="original-price"><del>INR {{single_ebook_document["original_price"]}}</del></p>
+                                            {% if single_ebook_document["discounted_price"]==0 %}
+                                                <p class="discount-price">FREE</p>
+                                            {% else %}
+                                                <p class="discount-price">INR {{single_ebook_document["discounted_price"]}}</p>
+                                            {% endif %}
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p class="no-books-message">No books available for your filter</p>
+                    {% endif %}
+                </div>  
+            </div>
+        </div>
+    </article>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryLinks = document.querySelectorAll('.category-bar-link');
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const degree = this.getAttribute('data-degree');
+                    const university = this.getAttribute('data-university');
+                    const year = this.getAttribute('data-year');
+                    const params = new URLSearchParams();
+                    if (degree) params.append('degree', degree);
+                    if (university) params.append('university', university);
+                    if (year) params.append('year', year);
+                    window.location.href = `/marketplace-test?${params.toString()}`;
+                });
+            });
+
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const sideCategoriesBar = document.getElementById('side-categories-bar');
+            hamburgerMenu.addEventListener('click', () => {
+                sideCategoriesBar.classList.toggle('show');
+            });
+        });
+    </script>
+    <script>
+        const hamburgerMenu = document.getElementById('nav-hamburger-menu');
+        const mainNavList = document.getElementById('main-nav-list');
+        const mainContent = document.getElementById('main-content');
+
+        hamburgerMenu.addEventListener('click', () => {
+            mainNavList.classList.toggle('show');
+            if (mainNavList.classList.contains('show')) {
+                mainContent.style.marginTop = `${mainNavList.offsetHeight}px`;
+            } else {
+                mainContent.style.marginTop = '0';
+            }
+        });
+    </script>
+    <div class="bottom-navbar">
+        <ul class="bottom-navbar-list">
+            <li class="bottom-navbar-list-element">
+                <a href="/" class="bottom-navbar-link"><ion-icon name="home-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li>
+            <li class="bottom-navbar-list-element">
+                <a href="/marketplace" class="bottom-navbar-link selected-nav-bar-link"><ion-icon name="cart-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li>
+            <!-- <li class="bottom-navbar-list-element">
+                <a href="" class="bottom-navbar-link"><ion-icon name="book-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li> -->
+            <li class="bottom-navbar-list-element">
+                <a href="/my-orders" class="bottom-navbar-link"><ion-icon name="list-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li>
+            <li class="bottom-navbar-list-element">
+                <a href="/purchase-history" class="bottom-navbar-link"><ion-icon name="cash-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li>
+            <li class="bottom-navbar-list-element">
+                <a href="/my-account/profile-settings" class="bottom-navbar-link"><ion-icon name="person-circle-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

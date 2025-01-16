@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment-failed.css') }}">
+    <title>EazyEbooks - Payment Failed</title>
+</head>
+<body>
+    <div class="payment-successful-container">
+        <ion-icon name="warning-outline" class="payment-check-icon"></ion-icon>
+        <h1 class="awesome">Oops!</h1>
+        <p class="payment-success-para">
+           There appears to be an issue with your payment. Please try again after some time.
+        </p>
+        <a href="{{ url_for('marketplace.BuyEbook', ebook_id=ebook_id) }}" class="view-library-link">Try Again</a>
+    </div>
+</body>
+</html>

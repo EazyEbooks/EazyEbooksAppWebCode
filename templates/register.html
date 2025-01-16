@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="../static/css/registration.css">
+    <title>EazyEbooks - Create an account</title>
+</head>
+<body>
+    <div class="container">
+        <!-- {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %} -->
+
+        <h2 class="registration-heading">Get started with us!</h2>
+        <form action="/register" class="registration-form"  method="post">
+            <div class="input-container">
+                <ion-icon name="person-outline" class="input-icon"></ion-icon>
+                <input class="form-input" type="text" name="full-name" id="" placeholder="Full name">
+            </div>
+            <div class="input-container">
+                <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+                <input class="form-input" type="email" name="email" id="" placeholder="Email">
+            </div>
+            <div class="degree-container">
+                <label class="form-lable" for="degrees">Select your degree</label>
+                <select class="form-input" name="degree" id="degrees">
+                    <option value="audi">None</option>
+                    <option value="degree-bsc">B.Sc</option>
+                    <option value="degree-bca">BCA</option>
+                    <option value="degree-ba">BA</option>
+                    <option value="degree-bcom">B.Com</option>
+                    <option value="degree-bed">B.Ed</option>
+                    <option value="degree-bba">BBA</option>
+                    <option value="degree-btech">B.Tech</option>
+                    <option value="degree-b-pharma">B Pharma</option>
+                    <option value="degree-bsc-nursing">B.Sc Nursing</option>
+                    <option value="degree-d-el-ed">D EL ED</option>
+                    <option value="degree-diploma">Diploma</option>
+                    <option value="degree-anm">ANM</option>
+                    <option value="degree-gnm">GNM</option>
+                    <option value="degree-other">Other</option>
+                </select>
+            </div>
+            <div class="input-container">
+                <ion-icon name="school-outline" class="input-icon"></ion-icon>
+                <input class="form-input" type="text" name="institution" id="" placeholder="School/College/University">
+            </div>
+            <div class="input-container">
+                <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                <input class="form-input" type="password" name="password" id="" placeholder="Password">
+            </div>
+            <div class="input-container">
+                <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                <input class="form-input" type="password" name="confirm-password" id="" placeholder="Confirm password">
+            </div>
+
+            <p class="t-and-p">By clicking on register, you are agreeing to our <a href="#">Privacy Policy</a> and <a href="#">Terms of Services</a></p>
+
+            <button type="submit" class="form-btn">Register</button>
+
+            <p class="login-link">Already have an account? <a href="/login">Log in</a></p>
+        </form>
+    </div>
+</body>
+</html>

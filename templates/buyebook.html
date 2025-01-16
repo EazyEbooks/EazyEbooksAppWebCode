@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-8875422219223826">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/marketplace.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/buybook.css') }}">
+    <title>EazyEbooks - Buy Books</title>
+</head>
+<body>
+   <article>
+        <div class="article-container">
+            <img src="{{ ebook['cover_image_path_url'] }}" alt="ebook cover image" class="ebook-cover-image">
+            <div class="ebook-details">
+                <p class="sale-text">Sale!</p>
+                <h2 class="ebook-name">{{ ebook['name'] }}</h2>
+                <p class="ebook-description">{{ ebook['description'] }}</p>
+                <p class="ebook-category">Category: {{ ebook['categories'] | join(', ') }}</p>
+                <p class="ebook-degree">Degree: {{ ebook['additional_info']['degree'] }}</p>
+                <p class="ebook-university">University: {{ ebook['additional_info']['university'] }}</p>
+                <p class="validity">E-BOOK will be valid for 6 months</p>
+                <div class="price_container">
+                    <p class="original-price">Original (E-book): <del>₹ {{ebook["original_price"]}}</del></p>
+                    <p class="discounted-price">Discounted (E-book): ₹ {{ebook["discounted_price"]}}</p>
+                </div>
+                <div class="price_container">
+                    <p class="original-price-hard-copy">Original (Hard Copy): <del>₹ {{ebook["original_price_hard_copy"]}}</del></p>
+                    <p class="discounted-price-hard-copy">Discounted (Hard Copy): ₹ {{ebook["discounted_price_hard_copy"]}}</p>
+                </div>
+                {% if book_purchased == 0 %}
+                    <form id="payment-form">
+                        <button id="buy-button">Buy E-book</button>
+                        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+                        <script>
+                            var options = {
+                                "key": "{{ razorpay_key_id }}",
+                                "amount": "{{ ebook['discounted_price'] * 100 }}", 
+                                "currency": "INR",
+                                "name": "EazyEbooks",
+                                "description": "Purchase {{ ebook['name'] }}",
+                                "order_id": "{{ order_id }}", 
+                                "handler": function (response) {
+                                    // Send payment response to the server
+                                    fetch("{{ url_for('marketplace.PaymentVerification', ebook_id=ebook['document_id']) }}", {
+                                        method: "POST",
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify(response),
+                                    }).then((res) => {
+                                        console.log("Payment processing response: JJJ ", res);
+                                        console.log(res.ok);
+                                        if (res.ok) {
+                                            window.location.href = "{{ url_for('payment-success.PaymentSuccess') }}";
+                                        } else {
+                                            window.location.href = "{{ url_for('payment-failed.PaymentFailed', ebook_id=ebook['document_id']) }}";
+
+                                        }
+                                    }).catch((error) => {
+                                        console.error("Payment processing error:", error);
+                                        window.location.href = "{{ url_for('payment-failed.PaymentFailed', ebook_id=ebook['document_id']) }}";
+                                    });
+                                },
+                                "prefill": {
+                                    "name": "{{ user.name }}",
+                                    "email": "{{ user.email }}",
+                                },
+                                "theme": {
+                                    "color": "#006bff"
+                                }
+                            };
+                            
+                            var rzp1 = new Razorpay(options);
+                            
+                            rzp1.on('payment.failed', function (response) {
+                                console.error("Payment failed:", response.error);
+                                window.location.href = "{{ url_for('payment-failed.PaymentFailed', ebook_id=ebook['document_id']) }}";
+                            });
+                            
+                            document.getElementById('buy-button').onclick = function (e) {
+                                rzp1.open();
+                                e.preventDefault();
+                            };
+                        </script>
+                    </form>
+                {% else %}
+                    <p class="already-purchased">You have already purchased this E-book</p>
+                {% endif %}
+
+                {% if ebook['hard-copy-availability'] == 'yes' %}
+                    <a href="{{ url_for('marketplace.AddShippingAddress', ebook_id=ebook['document_id']) }}" class="buy-hard-copy-link">Buy Hard Copy</a>
+                {% endif %}
+            </div>
+        </div>
+   </article>
+    <script>
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const mainNavList = document.getElementById('main-nav-list');
+        const mainContent = document.getElementById('main-content');
+
+        hamburgerMenu.addEventListener('click', () => {
+            mainNavList.classList.toggle('show');
+            if (mainNavList.classList.contains('show')) {
+                mainContent.style.marginTop = `${mainNavList.offsetHeight}px`;
+            } else {
+                mainContent.style.marginTop = '0';
+            }
+        });
+    </script>
+</body>
+</html>

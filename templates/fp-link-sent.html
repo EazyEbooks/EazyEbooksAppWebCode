@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/verification.css') }}">
+    <title>EazyEbooks - Password reset</title>
+</head>
+<body>
+    <div class="verification-container">
+        <ion-icon name="checkmark-outline" class="check-icon"></ion-icon>
+        <h2 class="verification-heading">Reset your password</h2>
+        <p class="verification-paragraph">You have entered <strong>{{ email }}</strong> as your email. We have sent password reset link to your email. Please open your mail app and reset your password. You can Login using the link below once your account is activated.</p>
+        <a href="/login" class="login-button">Log in</a>
+    </div>
+</body>
+</html>

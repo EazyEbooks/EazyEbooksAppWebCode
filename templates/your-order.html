@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-8875422219223826">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/your-order.css') }}">
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="stylesheet" href="../static/css/responsive.css">
+    <title>My Orders</title>
+</head>
+<body>
+    <main id="main-content">
+        <h1 class="orders-heading">My Orders</h1>
+        <div class="orders-container">
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Order Date</th>
+                        <th>Book</th>
+                        <th>Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr class="order-row" data-order-id="{{ loop.index }}">
+                        <td>{{ order.order_placement_date }}</td>
+                        <td>{{ order.ebook }}</td>
+                        <td>{{ order.status }}</td>
+                        <td><button class="btn-details" data-order-id="{{ loop.index }}">View Details</button></td>
+                    </tr>
+                    <tr class="order-details" id="order-details-{{ loop.index }}">
+                        <td colspan="4">
+                            <div class="details-content">
+                                <p><strong>Delivery Address:</strong></p>
+                                <p>{{ order.delivery_address.full_name }}</p>
+                                <p>{{ order.delivery_address.address }}</p>
+                                <p>{{ order.delivery_address.city }}, {{ order.delivery_address.state }}</p>
+                                <p>{{ order.delivery_address.email_address }}</p>
+                                <p>{{ order.delivery_address.mobile_number }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const navList = document.getElementById('nav-list');
+            const mainContent = document.getElementById('main-content');
+
+            hamburgerMenu.addEventListener('click', () => {
+                navList.classList.toggle('show');
+                if (navList.classList.contains('show')) {
+                    mainContent.style.marginTop = `${navList.offsetHeight}px`;
+                } else {
+                    mainContent.style.marginTop = '0';
+                }
+            });
+
+            const detailButtons = document.querySelectorAll('.btn-details');
+            detailButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const orderId = button.getAttribute('data-order-id');
+                    const detailsRow = document.getElementById(`order-details-${orderId}`);
+                    detailsRow.classList.toggle('show');
+                });
+            });
+        });
+    </script>
+    <div class="bottom-navbar">
+        <ul class="bottom-navbar-list">
+            <li class="bottom-navbar-list-element">
+                <a href="/" class="bottom-navbar-link"><ion-icon name="home-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li>
+            <li class="bottom-navbar-list-element">
+                <a href="/marketplace" class="bottom-navbar-link"><ion-icon name="cart-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li>
+            <!-- <li class="bottom-navbar-list-element">
+                <a href="" class="bottom-navbar-link"><ion-icon name="book-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li> -->
+            <li class="bottom-navbar-list-element">
+                <a href="/my-orders" class="bottom-navbar-link selected-nav-bar-link"><ion-icon name="list-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li>
+            <li class="bottom-navbar-list-element">
+                <a href="/purchase-history" class="bottom-navbar-link"><ion-icon name="cash-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li>
+            <li class="bottom-navbar-list-element">
+                <a href="/my-account/profile-settings" class="bottom-navbar-link"><ion-icon name="person-circle-outline" class="bottom-nav-icon"></ion-icon></a>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

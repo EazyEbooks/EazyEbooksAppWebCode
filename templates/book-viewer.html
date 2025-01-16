@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-8875422219223826">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+    <title>CloudPDF - viewer</title>
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0px;
+      }
+
+    </style>
+  </head>
+  <body style="height: 100%">
+    <div id="viewer" style="max-width: 70%; height: 100%; margin: 0px auto;"></div>
+    <script type="text/javascript" src="https://cloudpdf.io/viewer.min.js?version=0.1.0-beta.11"></script>
+    <script>
+    const config = { 
+        documentId: '{{ ebook_id }}',
+        darkMode: false
+    };
+    CloudPDF(config, document.getElementById('viewer')).then((instance) => {
+        
+    });
+    </script>
+  </body>
+</html>
