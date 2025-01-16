@@ -1,0 +1,129 @@
+/*
+
+--- 01 TYPOGRAPHY SYSTEM
+
+Spacing System (px) - 2/4/8/12/16/24/32/48/64/80/96/128
+Font Size System  (px) - 10/12/14/16/18/20/24/30/36/44/52/62/74/86/98
+Font Weights (px) - 500, 600, 700
+
+Default Line Height - 1, 1.05, 1.6
+
+---
+
+
+--- 02 COLORS
+
+Primary - #006bff
+Tints :-
+    1- #e6f0ff
+
+Shades -
+Accents -
+Greys - 
+
+---
+
+--- 05 SHADOWS
+
+--- 06 BORDER RADIUS
+
+--- 07 WHITESPACE
+
+Spacing System (px) - 2/4/8/12/16/24/32/48/64/80/96/128
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 52.5%;
+}
+
+body {
+    height: 100%;
+    /* background: linear-gradient(180deg, #0056cc 50%, #ffffff 50%); */
+    /* background-color: #0056cc; */
+    /* background-color: #006bff; */
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 80%;
+    margin: 15rem auto;
+    padding: 3.6rem;
+    background-color: #fff;
+    /* box-shadow: 0 1.2rem 2.4rem #000; */
+    border: 0.5rem solid #ddd;
+    border-radius: 1rem;
+}
+
+.registration-heading {
+    color: #333;
+    font-size: 3.6rem;
+    margin-bottom: 4.8rem;
+    text-align: center;
+}
+
+.registration-form {
+    display: flex;
+    max-width: 40rem;
+    margin: 0 auto;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+.form-input {
+    padding: 0.8rem;
+    width: 100%;
+}
+
+.form-lable {
+    font-size: 1.6rem;
+    color: #777;
+}
+
+.form-btn {
+    padding: 1rem 4.8rem;
+    font-size: 2.4rem;
+    margin: auto;
+    background-color: #006bff;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.form-btn:hover {
+    background-color: #0056cc;
+}
+
+.degree-container {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+}
+
+.t-and-p {
+    font-size: 1.4rem;
+}
+
+.login-link {
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.input-container {
+    display: flex;
+}
+
+.input-icon {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #333;
+    padding: 0.4rem 1.5rem;
+    border: 0.5px solid #006bff;
+    color: #fff;
+    background-color: #006bff;
+}

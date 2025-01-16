@@ -1,0 +1,327 @@
+body {
+    font-family: sans-serif;
+}
+
+/* header {
+    margin-bottom: 8rem;
+} */
+
+.sale-bar {
+    text-align: center;
+    padding: 2.4rem;
+    width: 100%;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #005ee2;
+    font-weight: bold;
+    margin-bottom: 8rem;
+}
+
+.product-categories-text {
+    font-size: 2.6rem;
+    margin-bottom: 4rem;
+    font-weight: 700;
+    color: #111;
+}
+
+.side-categories-bar {
+    width: 60rem;
+    max-width: 60rem;
+    text-align: center;
+}
+
+.degree-category {
+    margin-bottom: 2rem;
+    font-weight: 500;
+    margin-bottom: 5rem;
+}
+
+.degree-heading {
+    font-size: 1.8rem;
+    text-align: center;
+    color: #fff;
+    padding: 1rem;
+    width: 100%;
+    background-color: #005ee2;
+}
+
+.sub-category-element {
+    border-bottom: 0.1rem solid #c2c2c2;
+    padding: 1.5rem 2rem;
+}
+
+.degree-sub-category-list {
+    font-size: 1.4rem;
+    list-style: none;
+}
+
+.degree-sub-categories-list {
+    list-style: none;
+    font-size: 1.6rem;
+}
+
+.degree-sub-categories-list-element {
+    margin-left: 4rem;
+    margin-bottom: 1.2rem;
+}
+
+.degree-tripple-sub-category-list {
+    list-style: none;
+    font-size: 1.6rem;
+}
+
+.degree-tripple-sub-category-list-element {
+    margin-left: 4rem;
+    margin-bottom: 1.2rem;
+}
+
+.degree-sub-sub-category-list {
+    list-style: none;
+    font-size: 1.6rem;
+}
+
+.degree-sub-sub-category-list-element {
+    margin-left: 6rem;
+    margin-bottom: 1.2rem;
+}
+
+.category-bar-link {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-bar-link:hover {
+    color: #006bff;
+    transition: 0.5s;
+}
+
+.container {
+    display: flex;
+    gap: 15rem;
+}
+
+.course-heading {
+    font-size: 4rem;
+}
+
+.book-view-container {
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.4rem;
+}
+
+.book-card {
+    padding: 2rem;
+    text-align: center;
+    max-width: 25rem;
+}
+
+.book-link {
+    text-decoration: none;
+    color: #333;
+}
+
+.book-cover-page-image {
+    height: 30rem;
+    margin-bottom: 2rem;
+    padding: 2.2rem;
+    padding-bottom: 1rem;
+}
+
+.image-ribbon {
+    position: relative;
+}
+
+.book-name {
+    font-size: 2rem;
+    color: #111;
+    margin-bottom: 1.5rem;
+}
+
+.price-container {
+    font-size: 1.5rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.original-price {
+    color: #555;
+}
+
+.discount-price {
+    font-weight: 800;
+    color: #006bff;
+}
+
+.account-settings-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: #111;
+    padding: 1rem;
+    border: 1px solid #111;
+}
+
+.person-icon {
+    font-size: 4rem;
+}
+
+.marketplace-container {
+    max-width: 140rem;
+    margin: 0 auto;
+    display: flex;
+    gap: 5rem;
+}
+
+.ribbon {
+    width: 10rem;
+    height: 10rem;
+    overflow: hidden;
+    position: absolute;
+}
+
+.ribbon::before,
+.ribbon::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  display: block;
+  border: 3px solid #005c99;
+}
+
+.ribbon span {
+    position: absolute;
+    display: block;
+    text-align: center;
+    width: 165px;
+    padding: 5px 0;
+    background-color: #006bff;
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.ribbon-top-right {
+    top: 17px;
+    right: 20px;
+}
+
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+    border-top-color: transparent;
+    border-right-color: transparent;
+}
+
+.filter-burger {
+    display: none;
+}
+
+.ribbon-top-right::before {
+    top: 0;
+    left: 0;
+}
+.ribbon-top-right::after {
+    bottom: 0;
+    right: 0;
+}
+.ribbon-top-right span {
+    left: -22px;
+    top: 30px;
+    transform: rotate(45deg);
+}
+
+/* Responsive Styles */
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .filter-burger {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 2.4rem;
+        margin-bottom: 2rem;
+    }
+
+    .burger-icon {
+        font-size: 2.8rem;
+    }
+
+    .hamburger-menu {
+        display: block;
+        cursor: pointer;
+        font-size: 2.4rem;
+    }
+
+    .side-categories-bar {
+        display: none;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .side-categories-bar.show {
+        display: block;
+    }
+
+    .marketplace-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .book-view-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .book-card {
+        max-width: 100%;
+    }
+
+    .book-cover-page-image {
+        height: auto;
+        width: 100%;
+    }
+
+    .course-heading {
+        font-size: 3rem;
+    }
+}
+
+/* Tablet Styles */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .side-categories-bar {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .marketplace-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .book-view-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .book-card {
+        max-width: 100%;
+    }
+
+    .book-cover-page-image {
+        height: auto;
+        width: 100%;
+    }
+
+    .course-heading {
+        font-size: 3.5rem;
+    }
+}

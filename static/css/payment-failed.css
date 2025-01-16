@@ -1,0 +1,60 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 52.5%;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.payment-successful-container {
+    max-width: 60rem;
+    margin: 20rem auto;
+    padding: 4rem;
+    padding-top: 13rem;
+    color: #444;
+    background-color: #fff;
+    box-shadow: 0 0.5rem 1rem #000000;
+    border-radius: 0.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.payment-check-icon {
+    font-size: 10rem;
+    color: #fafafa;
+    padding: 3rem;
+    background-color: #f00000;
+    border-radius: 50%;
+    position: absolute;
+    top: -7rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.awesome {
+    font-size: 4rem;
+    margin-bottom: 3rem;
+}
+
+.payment-success-para {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+}
+
+.view-library-link {
+    display: inline-block;
+    padding: 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    width: 100%;
+    background-color: #f00000;
+    font-size: 1.8rem;
+}
