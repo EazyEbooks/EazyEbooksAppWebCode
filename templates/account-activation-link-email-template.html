@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Activation - EazyEbooks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            padding: 20px;
+            background-color: #ffffff;
+            margin: 0 auto;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #005aff;
+            color: #ffffff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .body {
+            padding: 20px;
+            font-size: 16px;
+            color: #333333;
+        }
+        .body a {
+            color: #005aff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .footer {
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            color: #888888;
+        }
+        .footer a {
+            color: #005aff;
+            text-decoration: none;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            /* background-color: #005aff; */
+            /* color: white; */
+            border: 0.1rem solid #0041cc;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .cta-button:hover {
+            background-color: #0047cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Welcome to EazyEbooks!</h1>
+        </div>
+        <div class="body">
+            <p>Hi there,</p>
+            <p>Thank you for choosing EazyEbooks! We're excited to have you on board.</p>
+            <p>To get started, please activate your account by clicking the link below:</p>
+            <a href="{{ activation_url }}" class="cta-button">Activate Your Account</a>
+            <p>If you didn’t sign up for EazyEbooks, no worries – just ignore this email, and nothing will happen.</p>
+            <p>Looking forward to having you with us!</p>
+            <p>Cheers,<br>The EazyEbooks Team</p>
+        </div>
+        <div class="footer">
+            <p>If you have any questions, feel free to <a href="mailto:support@eazyebooks.com">contact us</a>.</p>
+        </div>
+    </div>
+</body>
+</html>

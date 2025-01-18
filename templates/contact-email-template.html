@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form Submission</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .email-header {
+            background-color: #005aff;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .email-header p {
+            margin: 5px 0 0;
+            font-size: 16px;
+        }
+        .email-body {
+            padding: 20px 30px;
+        }
+        .email-body h2 {
+            color: #005aff;
+            font-size: 20px;
+            margin-top: 0;
+        }
+        .email-body p {
+            margin: 10px 0;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        .email-body .details {
+            background-color: #f5f5f5;
+            border-left: 5px solid #005aff;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .email-body .details p {
+            margin: 5px 0;
+            font-size: 15px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #005aff;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: #0045cc;
+        }
+        .email-footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #005aff;
+            color: #fff;
+            font-size: 14px;
+        }
+        .email-footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Email Header -->
+        <div class="email-header">
+            <h1>EazyEbooks</h1>
+            <p>Your Digital Learning Partner</p>
+        </div>
+        
+        <!-- Email Body -->
+        <div class="email-body">
+            <h2>Contact Form Submission</h2>
+            <p><strong>Hi Team,</strong></p>
+            <p>You have received a new contact form submission. Here are the details:</p>
+            <div class="details">
+                <p><strong>Name:</strong> {{ name }}</p>
+                <p><strong>Email:</strong> {{ email }}</p>
+                <p><strong>Phone:</strong> {{ phone }}</p>
+                <p><strong>Institution:</strong> {{ institution }}</p>
+                <p><strong>Message:</strong> {{ message }}</p>
+            </div>
+            <a href="https://www.eazyebooks.com" class="btn">Visit EazyEbooks</a>
+        </div>
+        
+        <!-- Email Footer -->
+        <div class="email-footer">
+            <p>Thank you for being a part of EazyEbooks!</p>
+            <p><a href="https://www.eazyebooks.com">www.eazyebooks.com</a></p>
+        </div>
+    </div>
+</body>
+</html>
