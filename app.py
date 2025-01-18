@@ -14,6 +14,7 @@ from resources.database.user_order import blp as UserOrderBlueprint
 from resources.general.marketplace import blp as MarketplaceBlueprint
 from resources.database.payment_success import blp as PaymentSuccessBlueprint
 from resources.database.payment_failed import blp as PaymentFailedBlueprint
+from resources.database.verification import blp as VerificationBlueprint
 
 def factory_pattern(db_url=None):
     app = Flask(__name__)
@@ -44,6 +45,7 @@ def factory_pattern(db_url=None):
     api.register_blueprint(MarketplaceBlueprint)
     api.register_blueprint(PaymentSuccessBlueprint)
     api.register_blueprint(PaymentFailedBlueprint)
+    api.register_blueprint(VerificationBlueprint)
 
     @app.before_request
     def make_session_permanent():
