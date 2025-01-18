@@ -14,13 +14,11 @@
         {% if message == "Account Activated" %}
             <ion-icon name="mail" class="mail-icon"></ion-icon>
             <p class="greeting">Hello {{ full_name }},</p>
-            <p class="activation-paragraph">Thank you for choosing EazyEbooks, your email has been verified. Your account is now active. Please use the link below to Log in to your account.</p>
-            <a href="/login" class="login-link">login to your account</a>
+            <p class="activation-paragraph">Thank you for choosing EazyEbooks, your email has been verified. Your account is now active. Please go back to the EazyEbooks app and login to your account.</p>
         {% elif message == "Account is already active" %}
             <ion-icon name="mail" class="mail-icon"></ion-icon>
             <p class="greeting">Hello {{ full_name }},</p>
-            <p class="activation-paragraph">Thank you for choosing EazyEbooks, we have noticed that your account is already active. Please use the link below to Log in to your account.</p>
-            <a href="/login" class="login-link">login to your account</a>
+            <p class="activation-paragraph">Thank you for choosing EazyEbooks, we have noticed that your account is already active. Please go back to the EazyEbooks app and login to your account.</p>
         {% elif message == "Invalid activation link" %}
             <ion-icon name="close" class="close-icon"></ion-icon>
             <p class="activation-paragraph">Oops!! This activation link is expired. Please try again with another activation link</p>

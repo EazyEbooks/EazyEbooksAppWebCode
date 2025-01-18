@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-8875422219223826">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/order-overview.css') }}">
+    <title>EazyEbooks - Order Overview</title>
+</head>
+<body>
+    <div class="order-overview-container">
+        <h2 class="order-overview-heading">Order Overview</h2>
+        <div class="order-details">
+            <div class="left-overview">
+                <img src="{{ebook['cover_image_path_url']}}" alt="ebook-image" class="ebook-image">
+                <p class="ebook-name">{{ebook['name']}}</p>
+                <p class="ebook-category">Category: {{ebook['categories'] | join(', ')}}</p>
+                <p class="price">Price: ₹{{ ebook['discounted_price_hard_copy'] }}</p>
+            </div>
+            <div class="right-overview">
+                <h3>Shipping Address</h3>
+                <div class="address-details">
+                    <p><strong>Name:</strong> {{ shipping_address.full_name }}</p>
+                    <p><strong>Email:</strong> {{ shipping_address.email_address }}</p>
+                    <p><strong>Mobile:</strong> {{ shipping_address.mobile_number }}</p>
+                    <p><strong>Address:</strong> {{ shipping_address.address }}</p>
+                    <p><strong>City:</strong> {{ shipping_address.city }}</p>
+                </div>
+            </div>
+        </div>
+        <!-- <button class="btn-buy">Buy</button> -->
+        <form id="payment-form">
+            <button id="btn-buy">Buy Now</button>
+            <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+            <script>
+                var options = {
+                    "key": "{{ razorpay_key_id }}",
+                    "amount": "{{ ebook['discounted_price_hard_copy'] * 100 }}", 
+                    "currency": "INR",
+                    "name": "EazyEbooks",
+                    "description": "Purchase {{ ebook['name'] }}",
+                    "order_id": "{{ order_id }}", 
+                    "handler": function (response) {
+                        // Send payment response to the server
+                        fetch("{{ url_for('marketplace.PaymentVerificationHardCopy', ebook_id=ebook['document_id']) }}", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(response),
+                        }).then((res) => {
+                            console.log("Payment processing response: JJJ ", res);
+                            console.log(res.ok);
+                            if (res.ok) {
+                                window.location.href = "{{ url_for('payment-success.OrderSuccess') }}";
+                            } else {
+                                window.location.href = "{{ url_for('payment-failed.PaymentFailed', ebook_id=ebook['document_id']) }}";
+
+                            }
+                        }).catch((error) => {
+                            console.error("Payment processing error:", error);
+                            window.location.href = "{{ url_for('payment-failed.PaymentFailed', ebook_id=ebook['document_id']) }}";
+                        });
+                    },
+                    "prefill": {
+                        "name": "{{ user.name }}",
+                        "email": "{{ user.email }}",
+                    },
+                    "theme": {
+                        "color": "#006bff"
+                    }
+                };
+                
+                var rzp1 = new Razorpay(options);
+                
+                rzp1.on('payment.failed', function (response) {
+                    console.error("Payment failed:", response.error);
+                    window.location.href = "{{ url_for('payment-failed.PaymentFailed', ebook_id=ebook['document_id']) }}";
+                });
+                
+                document.getElementById('btn-buy').onclick = function (e) {
+                    rzp1.open();
+                    e.preventDefault();
+                };
+            </script>
+        </form>
+    </div>
+</body>
+</html>
