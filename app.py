@@ -26,7 +26,7 @@ def factory_pattern(db_url=None):
     app.config["OPENAPI_URL_PREFIX"] = "/"
     app.config["OPENAPI_SWAGGER_UI_PATH"] = "/swagger-ui"
     app.config["JWT_SECRET_KEY"] = "189063608319052126134504268958895715337"
-    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=5)
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=2880)
     app.secret_key = "00ae1987adf41f0d2c421f912e7eecb8e8bdc0d6fc0bb3295b1db934d1b086a4"
     app.config["EBOOK_IMAGE_UPLOAD_FOLDER"] = "static/images/books"
 
