@@ -129,6 +129,7 @@ class RegistrationPage(MethodView):
             print(e)
 
         return redirect(url_for("verify_email.EmailVerification", email=email))
+
     
 @blp.route("/authentication/activate-account/<token>")
 class ActivateAccount(MethodView):
