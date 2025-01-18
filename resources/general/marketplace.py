@@ -92,11 +92,11 @@ class MarketplaceTest(MethodView):
 
             query = {}
             if degree:
-                query['additional_info.degree'] = {'$regex': degree, '$options': 'i'}
+                query['additional_info.degree'] = {'$regex': f'^{degree}$', '$options': 'i'}
             if university:
-                query['additional_info.university'] = {'$regex': university, '$options': 'i'}
+                query['additional_info.university'] = {'$regex': f'^{university}$', '$options': 'i'}
             if year:
-                query['additional_info.year'] = {'$regex': year, '$options': 'i'}
+                query['additional_info.year'] = {'$regex': f'^{year}$', '$options': 'i'}
 
             ebook_documents = []
 
