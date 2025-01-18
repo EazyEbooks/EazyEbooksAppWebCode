@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../static/css/home.css">
     <link rel="stylesheet" href="../static/css/responsive.css">
     <title>EazyEbooks - Marketplace</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8875422219223826"
+     crossorigin="anonymous"></script>
 </head>
 <body>
     <article>
@@ -63,7 +65,7 @@
                     <h2 class="degree-heading">B.Ba</h2>
                     <div class="sub-degree-container">
                         <ul class="degree-sub-category-list">
-                            <li class="sub-category-element"><a href="#" class="category-bar-link" data-degree="B.Ed" data-university="AK University"><p>AK University</p><ion-icon name="play-outline" class="sub-category-icon"></ion-icon></a></li>
+                            <li class="sub-category-element"><a href="#" class="category-bar-link" data-degree="B.Ba" data-university="AK University"><p>AK University</p><ion-icon name="play-outline" class="sub-category-icon"></ion-icon></a></li>
                         </ul> 
                     </div>
                 </div>
@@ -123,7 +125,7 @@
                     if (degree) params.append('degree', degree);
                     if (university) params.append('university', university);
                     if (year) params.append('year', year);
-                    window.location.href = `/marketplace-test?${params.toString()}`;
+                    window.location.href = `/marketplace?${params.toString()}`;
                 });
             });
 
