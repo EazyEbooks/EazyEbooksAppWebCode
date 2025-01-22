@@ -1,8 +1,10 @@
-from flask import request, render_template, flash, redirect, url_for, session
+from flask import request, render_template, flash, redirect, url_for, session, current_app
 from pymongo import MongoClient
 from werkzeug.security import check_password_hash
 from flask.views import MethodView
 from flask_smorest import Blueprint, abort
+from datetime import datetime, timezone
+import logging
 
 blp = Blueprint(
     "login",
@@ -27,27 +29,35 @@ class LoginPage(MethodView):
         email = request.form.get("email")
         password = request.form.get("password")
 
-        print(f"Email entered: {email}, Password entered: {password}")
-
-        if not email or not password:
-            flash("Both email and password fields are required")
-            return redirect(url_for("login.LoginPage"))
-        
         user = users_collection.find_one({"email": email})
-        print(f"User found: {user}")
 
-        if not user:
-            flash("An user with this email does not exist!")
-            return redirect(url_for("login.LoginPage"))
-        
-        if not check_password_hash(user["password"], password):
-            flash("Invalid email or password")
-            return redirect(url_for("login.LoginPage"))
-        
-        session.clear()
-        session["user_id"] = str(user["_id"])
-        session["email"] = user["email"]
-        session["user_name"] = user["full_name"]
+        if user and check_password_hash(user["password"], password):
+            if user.get("active_session"):
+                return redirect(url_for("login.AccountActivePage"))
+            
+            session["user_id"] = str(user["_id"])
+            session["email"] = user["email"]
+            session["user_name"] = user["full_name"]
+            users_collection.update_one(
+                {"email": email},
+                {"$set": {"active_session": True, "last_activity": datetime.now(timezone.utc).isoformat()}}
+            )
+            logging.info(f"User {email} logged in successfully.")
+            return redirect(url_for("home.Home"))
+        else:
+            logging.warning(f"Failed login attempt for email: {email}")
+            return render_template("login.html", error="Invalid email or password")
 
-        print(f"Session created for user ID: {session['user_id']}, Name: {session['user_name']}")
-        return redirect(url_for("home.Home"))
+@blp.route("/logout")
+class LogoutPage(MethodView):
+    def get(self):
+        if "user_id" in session:
+            logging.info(f"Logging out user: {session['email']}")
+            users_collection.update_one({"email": session["email"]}, {"$set": {"active_session": False}})
+            session.clear()
+        return redirect(url_for("login.LoginPage"))
+
+@blp.route("/account-active")
+class AccountActivePage(MethodView):
+    def get(self):
+        return render_template("account_active.html")

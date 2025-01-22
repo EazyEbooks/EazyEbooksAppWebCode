@@ -1,5 +1,6 @@
 import random
 import string
+import logging
 from flask import request, render_template, flash, redirect, url_for, session
 from pymongo import MongoClient
 from werkzeug.security import check_password_hash
@@ -133,5 +134,8 @@ class ProfileSettings(MethodView):
 @blp.route("/logout", methods=["POST"])
 class Logout(MethodView):
     def post(self):
-        session.clear()
+        if "user_id" in session:
+            logging.info(f"Logging out user: {session['email']}")
+            users_collection.update_one({"email": session["email"]}, {"$set": {"active_session": False}})
+            session.clear()
         return redirect(url_for("login.LoginPage"))
