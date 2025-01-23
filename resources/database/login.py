@@ -23,6 +23,9 @@ def make_session_permanent():
 @blp.route("/login")
 class LoginPage(MethodView):
     def get(self):
+        if "user_id" in session:
+            return redirect(url_for("home.Home"))
+        
         return render_template("login.html")
     
     def post(self):
