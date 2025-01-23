@@ -115,3 +115,47 @@ body {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .order-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-overview,
+    .right-overview {
+        margin: 0;
+        width: 100%;
+    }
+
+    .right-overview {
+        margin-top: 20px;
+    }
+
+    .ebook-image {
+        width: 100px;
+        height: 150px;
+    }
+
+    .ebook-name {
+        font-size: 1.6rem;
+    }
+
+    .ebook-category,
+    .price {
+        font-size: 1.4rem;
+    }
+
+    .right-overview h3 {
+        font-size: 1.8rem;
+    }
+
+    .address-details p {
+        font-size: 1.6rem;
+    }
+
+    #btn-buy {
+        font-size: 1.6rem;
+    }
+}
