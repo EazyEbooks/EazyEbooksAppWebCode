@@ -16,14 +16,17 @@ body {
     text-align: center;
     margin: 20rem auto;
     max-width: 90%;
+    border: 0.15rem solid #8b8b8b;
+    border-radius: 1rem;
     /* box-shadow: 0 1.2rem 2.4rem #000; */
 }
 
 .login-heading {
     font-size: 5rem;
     margin-bottom: 3rem;
-    background-color: #006bff;
+    background: linear-gradient(1335deg, #006bff, #003d92);
     color: #fff;
+    border-radius: 1rem;
     padding: 2rem;
 }
 
@@ -43,15 +46,15 @@ body {
 }
 
 .form-inp:hover, .form-inp:focus {
-    outline: 1px solid #006bff;
+    outline: 1px solid #0059cc;
 }
 
 .form-icon {
     font-size: 3rem;
     padding: 0.5rem;
     color: #fff;
-    background-color: #006bff;
-    border: 1px solid #006bff;
+    background: linear-gradient(1335deg, #006bff, #003d92);
+    border: 1px solid #0059cc;
 }
 
 .bottom-form {
@@ -70,12 +73,12 @@ body {
     border: none;
     font-size: 2rem;
     margin-top: 2rem;
-    background-color: #006bff;
+    background: linear-gradient(1335deg, #006bff, #003d92);
     color: #fff;
     font-weight: bold;
     margin-bottom: 2rem;
 }
 
 .login-btn:hover {
-    background-color: #0056cc;
+    background: linear-gradient(1335deg, #003d92, #006bff);
 }

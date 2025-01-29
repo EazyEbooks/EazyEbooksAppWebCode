@@ -7,8 +7,8 @@ body {
 
 .order-overview-container {
     max-width: 800px;
-    margin: 9rem auto;
-    padding: 20px;
+    margin: 1rem auto;
+    padding: 2rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fff;
@@ -92,7 +92,6 @@ body {
     display: block;
     width: 100%;
     padding: 12px 20px;
-    background-color: #006bff;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -102,18 +101,26 @@ body {
     font-weight: bold;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
     margin-top: 20px;
+    background: linear-gradient(1335deg, #006bff, #003d92)
 }
 
 #btn-buy:hover {
-    background-color: #0056cc;
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(1335deg, #003d92, #006bff)
 }
 
 #btn-buy:active {
-    background-color: #004bb5;
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(1335deg, #006bff, #003d92)
+}
+
+.note {
+    padding: 1rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background: linear-gradient(1335deg, #fc1f1f, #9f0000)
 }
 
 /* Responsive Styles */

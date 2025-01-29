@@ -12,6 +12,7 @@ body {
     max-width: 100%;
     padding: 2rem;
     margin: 1rem auto;
+    margin-bottom: 3.5rem;
 }
 
 .profile-flex-container {
@@ -24,7 +25,7 @@ body {
 .profile-settings-heading {
     font-size: 4rem;
     color: #333;
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
 }
 
 .pic-and-para {
@@ -48,7 +49,7 @@ body {
 .student {
     padding: 1rem 3rem;
     color: #fff;
-    background-color: #006bff;
+    background: linear-gradient(1335deg, #006bff, #003d92);
 }
 
 .profile-icon {
@@ -118,11 +119,11 @@ label {
     font-size: 2rem;
     color: #fff;
     border: none;
-    background-color: #006bff;
+    background: linear-gradient(1335deg, #006bff, #003d92);
 }
 
 .form-btn:hover {
-    background-color: #0056cc;
+    background: linear-gradient(1335deg, #003d92, #006bff);
 }
 
 .log-out-button {

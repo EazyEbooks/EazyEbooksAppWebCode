@@ -89,14 +89,14 @@ body {
     padding: 1rem 4.8rem;
     font-size: 2.4rem;
     margin: auto;
-    background-color: #006bff;
+    background: linear-gradient(1335deg, #006bff, #004bb5);
     border: none;
     color: #fff;
     font-weight: bold;
 }
 
 .form-btn:hover {
-    background-color: #0056cc;
+    background: linear-gradient(1335deg, #004bb5, #006bff);
 }
 
 .degree-container {
@@ -125,5 +125,5 @@ body {
     padding: 0.4rem 1.5rem;
     border: 0.5px solid #006bff;
     color: #fff;
-    background-color: #006bff;
+    background: linear-gradient(1335deg, #006bff, #004bb5);
 }

@@ -1,5 +1,6 @@
 body {
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
 }
 
 /* header {
@@ -8,81 +9,54 @@ body {
 
 .sale-bar {
     text-align: center;
-    padding: 2.4rem;
+    padding: 1rem;
     width: 100%;
     font-size: 1rem;
     color: #fff;
-    background-color: #005ee2;
+    background: linear-gradient(1335deg, #006bff, #003d92);
     font-weight: bold;
-    margin-bottom: 8rem;
+    margin-bottom: 1rem;
 }
 
 .product-categories-text {
-    font-size: 2.6rem;
-    margin-bottom: 4rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
     font-weight: 700;
     color: #111;
 }
 
 .side-categories-bar {
-    width: 60rem;
-    max-width: 60rem;
-    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .degree-category {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     font-weight: 500;
-    margin-bottom: 5rem;
 }
 
 .degree-heading {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     text-align: center;
     color: #fff;
-    padding: 1rem;
-    width: 100%;
+    padding: 0.5rem;
     background-color: #005ee2;
+    border-radius: 4px;
 }
 
 .sub-category-element {
     border-bottom: 0.1rem solid #c2c2c2;
-    padding: 1.5rem 2rem;
+    padding: 0.5rem 1rem;
 }
 
 .degree-sub-category-list {
-    font-size: 1.4rem;
+    font-size: 1rem;
     list-style: none;
-}
-
-.degree-sub-categories-list {
-    list-style: none;
-    font-size: 1.6rem;
-}
-
-.degree-sub-categories-list-element {
-    margin-left: 4rem;
-    margin-bottom: 1.2rem;
-}
-
-.degree-tripple-sub-category-list {
-    list-style: none;
-    font-size: 1.6rem;
-}
-
-.degree-tripple-sub-category-list-element {
-    margin-left: 4rem;
-    margin-bottom: 1.2rem;
-}
-
-.degree-sub-sub-category-list {
-    list-style: none;
-    font-size: 1.6rem;
-}
-
-.degree-sub-sub-category-list-element {
-    margin-left: 6rem;
-    margin-bottom: 1.2rem;
+    padding: 0;
 }
 
 .category-bar-link {
@@ -97,59 +71,121 @@ body {
     transition: 0.5s;
 }
 
-.container {
+.marketplace-container {
     display: flex;
-    gap: 15rem;
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .course-heading {
-    font-size: 4rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.search-bar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.search-form {
+    display: flex;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #006bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #0056cc;
 }
 
 .book-view-container {
-    padding: 3rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.4rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
 }
 
 .book-card {
-    padding: 2rem;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    max-width: 25rem;
+    position: relative;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .book-link {
     text-decoration: none;
-    color: #333;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 .book-cover-page-image {
-    height: 30rem;
-    margin-bottom: 2rem;
-    padding: 2.2rem;
-    padding-bottom: 1rem;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
 }
 
-.image-ribbon {
-    position: relative;
+.book-card-content {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 }
 
-.book-name {
-    font-size: 2rem;
+.book-title {
+    font-size: 0.9rem;
     color: #111;
-    margin-bottom: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
 
 .price-container {
-    font-size: 1.5rem;
+    font-size: 0.8rem;
     display: flex;
-    gap: 2rem;
+    gap: 0.5rem;
     justify-content: center;
+    align-items: center;
 }
 
 .original-price {
     color: #555;
+    text-decoration: line-through;
 }
 
 .discount-price {
@@ -157,108 +193,57 @@ body {
     color: #006bff;
 }
 
-.account-settings-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-size: 1.8rem;
-    text-decoration: none;
-    color: #111;
-    padding: 1rem;
-    border: 1px solid #111;
-}
-
-.person-icon {
-    font-size: 4rem;
-}
-
-.marketplace-container {
-    max-width: 140rem;
-    margin: 0 auto;
-    display: flex;
-    gap: 5rem;
-}
-
-.ribbon {
-    width: 10rem;
-    height: 10rem;
-    overflow: hidden;
-    position: absolute;
-}
-
-.ribbon::before,
-.ribbon::after {
-  position: absolute;
-  z-index: -1;
-  content: '';
-  display: block;
-  border: 3px solid #005c99;
-}
-
-.ribbon span {
-    position: absolute;
-    display: block;
+.no-books-message {
     text-align: center;
-    width: 165px;
-    padding: 5px 0;
-    background-color: #006bff;
-    box-shadow: 0 5px 10px rgba(0,0,0,.1);
-    color: #fff;
-    font-size: 1.6rem;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-size: 1rem;
+    color: #555;
+    margin-top: 2rem;
 }
 
-.ribbon-top-right {
-    top: 17px;
-    right: 20px;
-}
-
-.ribbon-top-right::before,
-.ribbon-top-right::after {
-    border-top-color: transparent;
-    border-right-color: transparent;
+.hamburger-menu {
+    display: none;
+    cursor: pointer;
+    font-size: 2rem;
+    margin-left: 1.5rem;
 }
 
 .filter-burger {
-    display: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-.ribbon-top-right::before {
-    top: 0;
-    left: 0;
+.burger-icon {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    background: linear-gradient(1335deg, #006bff, #003d92);
+    color: #fff;
+    border-radius: 0.7rem;
+    transition: 0.6s;
 }
-.ribbon-top-right::after {
-    bottom: 0;
-    right: 0;
-}
-.ribbon-top-right span {
-    left: -22px;
-    top: 30px;
-    transform: rotate(45deg);
+
+.burger-icon:active {
+    padding: 0.9rem;
+    transition: 0.6s;
 }
 
 /* Responsive Styles */
-
-/* Mobile Styles */
 @media (max-width: 600px) {
     .filter-burger {
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-size: 2.4rem;
-        margin-bottom: 2rem;
-    }
-
-    .burger-icon {
-        font-size: 2.8rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     .hamburger-menu {
         display: block;
         cursor: pointer;
-        font-size: 2.4rem;
+        font-size: 2rem;
+        margin-left: 1.5rem;
     }
 
     .side-categories-bar {
@@ -273,12 +258,12 @@ body {
 
     .marketplace-container {
         flex-direction: column;
-        gap: 2rem;
+        gap: 1rem;
     }
 
     .book-view-container {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1rem;
     }
 
     .book-card {
@@ -291,11 +276,10 @@ body {
     }
 
     .course-heading {
-        font-size: 3rem;
+        font-size: 1.5rem;
     }
 }
 
-/* Tablet Styles */
 @media (min-width: 601px) and (max-width: 1024px) {
     .side-categories-bar {
         width: 100%;
@@ -304,12 +288,12 @@ body {
 
     .marketplace-container {
         flex-direction: column;
-        gap: 3rem;
+        gap: 1rem;
     }
 
     .book-view-container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
+        gap: 1rem;
     }
 
     .book-card {
@@ -322,6 +306,6 @@ body {
     }
 
     .course-heading {
-        font-size: 3.5rem;
+        font-size: 1.5rem;
     }
 }
