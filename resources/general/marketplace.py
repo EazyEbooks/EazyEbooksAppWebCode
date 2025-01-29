@@ -45,6 +45,7 @@ class Marketplace(MethodView):
             degree = request.args.get('degree')
             university = request.args.get('university')
             year = request.args.get('year')
+            search = request.args.get('search')
 
             query = {}
             if degree:
@@ -53,6 +54,8 @@ class Marketplace(MethodView):
                 query['additional_info.university'] = {'$regex': university, '$options': 'i'}
             if year:
                 query['additional_info.year'] = {'$regex': year, '$options': 'i'}
+            if search:
+                query['name'] = {'$regex': search, '$options': 'i'}
 
             ebook_documents = []
 
@@ -71,7 +74,8 @@ class Marketplace(MethodView):
                 ebook_documents=ebook_documents,
                 degree=degree,
                 university=university,
-                year=year
+                year=year,
+                search=search
             )
 
 @blp.route("/marketplace-test")

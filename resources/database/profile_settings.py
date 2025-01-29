@@ -138,4 +138,4 @@ class Logout(MethodView):
             logging.info(f"Logging out user: {session['email']}")
             users_collection.update_one({"email": session["email"]}, {"$set": {"active_session": False}})
             session.clear()
-        return redirect(url_for("login.LoginPage"))
+        return redirect(url_for("get_started.get_started"))
