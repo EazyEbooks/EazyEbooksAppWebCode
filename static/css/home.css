@@ -366,3 +366,11 @@ body {
 .selected-bottom-nav-bar-link {
     background-color: #003682;
 }
+
+/* Mobile Styles */
+@media (max-width: 600px) {
+    .library-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
