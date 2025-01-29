@@ -14,58 +14,82 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="home-content">
-        <div class="blue-board">
-            <h2 class="welcome-back-text">Welcome back <strong>{{name}}</strong></h2>
-            <div class="outgoing-board">
-                <h4 class="start-reading">Start exploring a world of amazing academic e-books today</h4>
+    <div id="home-content">
+        <header class="header">
+            <div class="account-info">
+                <ion-icon name="person-circle-outline" class="account-icon"></ion-icon>
+                <div class="account-details">
+                    <p class="user-name">{{ session.user_name }}</p>
+                    <p class="tagline">Get Set Read!</p>
+                </div>
             </div>
+            <nav class="main-nav">
+                <ul class="main-nav-list">
+                    <li><a href="/" class="main-nav-link"><ion-icon name="home-outline" class="main-nav-icon"></ion-icon></a></li>
+                    <li><a href="/marketplace" class="main-nav-link"><ion-icon name="cart-outline" class="main-nav-icon"></ion-icon></a></li>
+                    <li><a href="/my-orders" class="main-nav-link"><ion-icon name="list-outline" class="main-nav-icon"></ion-icon></a></li>
+                    <li><a href="/purchase-history" class="main-nav-link"><ion-icon name="cash-outline" class="main-nav-icon"></ion-icon></a></li>
+                    <li><a href="/my-account/profile-settings" class="main-nav-link"><ion-icon name="person-circle-outline" class="main-nav-icon"></ion-icon></a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="home-content">
+            <div class="hero-section">
+                <div class="hero-text">
+                    <h1>Welcome to EazyEbooks</h1>
+                    <p>Explore a world of amazing academic e-books today</p>
+                    <a href="/marketplace" class="btn btn-hero">Explore Now</a>
+                </div>
+                <img src="../static/images/general/undraw_book-lover_cmz5.svg" alt="Hero Image" class="hero-img">
+            </div>
+            <div class="hashtag-container">
+                <p class="hashtag-text">#PagesForPennies</p>
+            </div>
+            <!-- <img src="../static/images/general/EEimg12.png" alt="Discount Image" class="discount-img"> -->
+            <main id="main-content">
+                <h2 class="your-books-heading" style="margin-top: 2rem; font-size: 2rem; font-weight: bold;">Your Books</h2>
+                <div class="library-grid">
+                    {% if user_library %}
+                        {% for book in user_library %}
+                        <div class="library-item">
+                            <a href="{{ url_for('book_viewer.Read', ebook_id=book.document_id) }}" class="library-item-link">
+                                <img src="{{ book.cover_image_path_url }}" alt="{{ book.name }}" class="library-item-image">
+                                <div class="library-item-content">
+                                    <h3 class="library-item-title">{{ book.name[:20] }}{% if book.name|length > 20 %}...{% endif %}</h3>
+                                    <p class="library-item-date">Purchase Date: {{ book.purchase_date }}</p>
+                                    <p class="library-item-date">Expiry Date: {{ book.expiry_date }}</p>
+                                    <button class="btn btn-read">Read</button>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="no-books-message">
+                            <p>No E-books to show. Visit our <a href="{{ url_for('marketplace.Marketplace') }}">marketplace</a> and buy your 1st E-book.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </main>
         </div>
-        <main id="main-content">
-            <div class="library-grid">
-                {% if user_library %}
-                    {% for book in user_library %}
-                    <div class="library-item">
-                        <a href="{{ url_for('book_viewer.Read', ebook_id=book.document_id) }}" class="library-item-link">
-                            <img src="{{ book.cover_image_path_url }}" alt="{{ book.name }}" class="library-item-image">
-                            <div class="library-item-content">
-                                <h3 class="library-item-title">{{ book.name }}</h3>
-                                <p class="library-item-date">Purchase Date: {{ book.purchase_date }}</p>
-                                <p class="library-item-date">Expiry Date: {{ book.expiry_date }}</p>
-                                <button class="btn btn-read">Read</button>
-                            </div>
-                        </a>
-                    </div>
-                    {% endfor %}
-                {% else %}
-                    <div class="no-books-message">
-                        <p>No E-books to show. Visit our <a href="{{ url_for('marketplace.Marketplace') }}">marketplace</a> and buy your 1st E-book.</p>
-                    </div>
-                {% endif %}
-            </div>
-        </main>
-    </div>
-    <div class="bottom-navbar">
-        <ul class="bottom-navbar-list">
-            <li class="bottom-navbar-list-element">
-                <a href="/" class="bottom-navbar-link selected-nav-bar-link"><ion-icon name="home-outline" class="bottom-nav-icon"></ion-icon></a>
-            </li>
-            <li class="bottom-navbar-list-element">
-                <a href="/marketplace" class="bottom-navbar-link"><ion-icon name="cart-outline" class="bottom-nav-icon"></ion-icon></a>
-            </li>
-            <!-- <li class="bottom-navbar-list-element">
-                <a href="" class="bottom-navbar-link"><ion-icon name="book-outline" class="bottom-nav-icon"></ion-icon></a>
-            </li> -->
-            <li class="bottom-navbar-list-element">
-                <a href="/my-orders" class="bottom-navbar-link"><ion-icon name="list-outline" class="bottom-nav-icon"></ion-icon></a>
-            </li>
-            <li class="bottom-navbar-list-element">
-                <a href="/purchase-history" class="bottom-navbar-link"><ion-icon name="cash-outline" class="bottom-nav-icon"></ion-icon></a>
-            </li>
-            <li class="bottom-navbar-list-element">
-                <a href="/my-account/profile-settings" class="bottom-navbar-link"><ion-icon name="person-circle-outline" class="bottom-nav-icon"></ion-icon></a>
-            </li>
-        </ul>
+        <div class="bottom-navbar">
+            <ul class="bottom-navbar-list">
+                <li class="bottom-navbar-list-element">
+                    <a href="/" class="bottom-navbar-link selected-bottom-nav-bar-link"><ion-icon name="home-outline" class="bottom-nav-icon"></ion-icon></a>
+                </li>
+                <li class="bottom-navbar-list-element">
+                    <a href="/marketplace" class="bottom-navbar-link"><ion-icon name="cart-outline" class="bottom-nav-icon"></ion-icon></a>
+                </li>
+                <li class="bottom-navbar-list-element">
+                    <a href="/my-orders" class="bottom-navbar-link"><ion-icon name="list-outline" class="bottom-nav-icon"></ion-icon></a>
+                </li>
+                <li class="bottom-navbar-list-element">
+                    <a href="/purchase-history" class="bottom-navbar-link"><ion-icon name="cash-outline" class="bottom-nav-icon"></ion-icon></a>
+                </li>
+                <li class="bottom-navbar-list-element">
+                    <a href="/my-account/profile-settings" class="bottom-navbar-link"><ion-icon name="person-circle-outline" class="bottom-nav-icon"></ion-icon></a>
+                </li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>

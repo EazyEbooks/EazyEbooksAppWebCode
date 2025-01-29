@@ -17,6 +17,9 @@
 <body>
     <article>
         <p class="sale-bar">SUPER SALE <ion-icon name="flash-outline" class="sale-icon"></ion-icon> Upto 97% Discount</p>
+        <div class="hamburger-menu" id="hamburger-menu">
+            <p class="filter-burger"><ion-icon name="menu-outline" class="burger-icon"></ion-icon></p>
+        </div>
         <div class="marketplace-container">
             <div class="side-categories-bar" id="side-categories-bar">
                 <h2 class="product-categories-text">Product Categories</h2>
@@ -72,9 +75,7 @@
             </div>
 
             <div>
-                <div class="hamburger-menu" id="hamburger-menu">
-                    <p class="filter-burger"><ion-icon name="menu-outline" class="burger-icon"></ion-icon> Apply Filters</p>
-                </div>
+
                 <h2 class="course-heading">
                     {% if degree and university %}
                         {{ degree }} - {{ university }}
@@ -85,14 +86,21 @@
                     {% endif %}
                 </h2>
 
+                <div class="search-bar-container">
+                    <form action="{{ url_for('marketplace.Marketplace') }}" method="GET" class="search-form">
+                        <input type="text" name="search" placeholder="Search for books..." class="search-input">
+                        <button type="submit" class="search-button"><ion-icon name="search-outline"></ion-icon></button>
+                    </form>
+                </div>
+
                 <div class="book-view-container" id="book-view-container">
                     {% if ebook_documents %}
                         {% for single_ebook_document in ebook_documents %}
-                            <div class="book-card-container">
-                                <div class="book-card">
-                                    <a href="{{ url_for('marketplace.BuyEbook', ebook_id=single_ebook_document['document_id']) }}" class="book-link">
-                                        <img src="{{ single_ebook_document['cover_image_path_url'] }}" alt="" class="book-cover-page-image">
-                                        <p class="book-name">{{ single_ebook_document["name"] }}</p>
+                            <div class="book-card" style="border: 1px solid #000;">
+                                <a href="{{ url_for('marketplace.BuyEbook', ebook_id=single_ebook_document['document_id']) }}" class="book-link">
+                                    <img src="{{ single_ebook_document['cover_image_path_url'] }}" alt="" class="book-cover-page-image">
+                                    <div class="book-card-content">
+                                        <h3 class="book-title">{{ single_ebook_document["name"] }}</h3>
                                         <div class="price-container">
                                             <p class="original-price"><del>INR {{single_ebook_document["original_price"]}}</del></p>
                                             {% if single_ebook_document["discounted_price"]==0 %}
@@ -101,8 +109,8 @@
                                                 <p class="discount-price">INR {{single_ebook_document["discounted_price"]}}</p>
                                             {% endif %}
                                         </div>
-                                    </a>
-                                </div>
+                                    </div>
+                                </a>
                             </div>
                         {% endfor %}
                     {% else %}
@@ -156,11 +164,8 @@
                 <a href="/" class="bottom-navbar-link"><ion-icon name="home-outline" class="bottom-nav-icon"></ion-icon></a>
             </li>
             <li class="bottom-navbar-list-element">
-                <a href="/marketplace" class="bottom-navbar-link selected-nav-bar-link"><ion-icon name="cart-outline" class="bottom-nav-icon"></ion-icon></a>
+                <a href="/marketplace" class="bottom-navbar-link selected-bottom-nav-bar-link"><ion-icon name="cart-outline" class="bottom-nav-icon"></ion-icon></a>
             </li>
-            <!-- <li class="bottom-navbar-list-element">
-                <a href="" class="bottom-navbar-link"><ion-icon name="book-outline" class="bottom-nav-icon"></ion-icon></a>
-            </li> -->
             <li class="bottom-navbar-list-element">
                 <a href="/my-orders" class="bottom-navbar-link"><ion-icon name="list-outline" class="bottom-nav-icon"></ion-icon></a>
             </li>
