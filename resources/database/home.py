@@ -20,7 +20,7 @@ users_collection = db["users"]
 class Home(MethodView):
     def get(self):
         if "user_id" not in session:
-            return redirect(url_for("login.LoginPage"))
+            return redirect(url_for("get_started.get_started"))
         
         user = users_collection.find_one({"email": session["email"]})
         if user["admin_action"]["suspension"] == True:
@@ -30,7 +30,7 @@ class Home(MethodView):
         
         user = users_collection.find_one({"_id": ObjectId(session["user_id"])})
         if user is None:
-            return redirect(url_for("login.LoginPage"))
+            return redirect(url_for("get_started.get_started"))
         
         user_library = user.get("library", [])
         detailed_library = []
