@@ -29,16 +29,16 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const preloader = document.getElementById('preloader');
-            const getStartedContent = document.getElementById('get-started-content');
-            const video = document.getElementById('preloader-video');
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const preloader = document.getElementById('preloader');
+        //     const getStartedContent = document.getElementById('get-started-content');
+        //     const video = document.getElementById('preloader-video');
 
-            video.onended = function() {
-                preloader.style.display = 'none';
-                getStartedContent.style.display = 'block';
-            };
-        });
+        //     video.onended = function() {
+        //         preloader.style.display = 'none';
+        //         getStartedContent.style.display = 'block';
+        //     };
+        // });
 
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js')
