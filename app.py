@@ -69,4 +69,4 @@ def factory_pattern(db_url=None):
     return app
 
 if __name__ == "__main__":
-    factory_pattern().run(debug=True, host='0.0.0.0', port=8080)
+    factory_pattern().run(debug=False, host='0.0.0.0', port=8080)
