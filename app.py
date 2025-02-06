@@ -18,6 +18,9 @@ from resources.database.payment_failed import blp as PaymentFailedBlueprint
 from resources.database.verification import blp as VerificationBlueprint
 from resources.general.ads import blp as AdsBlueprint
 from resources.general.get_started import blp as GetStartedBlueprint
+from resources.general.offline import blp as OfflineBlueprint
+from resources.general.manifest import blp as ManifestBlueprint
+from resources.general.service_worker import blp as ServiceWorkerBlueprint
 
 def factory_pattern(db_url=None):
     app = Flask(__name__)
@@ -55,6 +58,9 @@ def factory_pattern(db_url=None):
     api.register_blueprint(VerificationBlueprint)
     api.register_blueprint(AdsBlueprint)
     api.register_blueprint(GetStartedBlueprint)
+    api.register_blueprint(OfflineBlueprint)
+    api.register_blueprint(ManifestBlueprint)
+    api.register_blueprint(ServiceWorkerBlueprint)
 
     @app.before_request
     def make_session_permanent():
