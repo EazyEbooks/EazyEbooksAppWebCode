@@ -1,0 +1,13 @@
+[
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.eazyebooks.eazyebooksapp", 
+        "sha256_cert_fingerprints": [
+          "9F:F1:3F:71:D0:8E:49:D7:75:D3:A2:CB:28:94:0A:27:94:B7:01:48:FD:A5:9F:D1:62:2C:1A:FB:29:80:B1:17"
+        ]
+      }
+    }
+  ]
+  

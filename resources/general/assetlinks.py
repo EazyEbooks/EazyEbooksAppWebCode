@@ -9,6 +9,6 @@ blp = Blueprint(
 )
 
 @blp.route("/.well-known/assetlinks.json")
-class ManifestPage(MethodView):
+class AssetLinkPage(MethodView):
     def get(self):
-        return send_from_directory('.well-known', 'assetlinks.json')
+        return send_from_directory('static', 'assetlinks.json')
