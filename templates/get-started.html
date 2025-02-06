@@ -9,16 +9,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-<!--     <div id="preloader">
-        <video id="preloader-video" autoplay muted>
-            <source src="../static/images/general/preloader.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div> -->
-    <div id="get-started-content" style="display: none;">
+    <div id="get-started-content">
         <div class="container">
             <div class="image-container">
-                <img src="../static/images/general/1277.webp" alt="Girl Reading" class="girl-image">
+                <img src="../static/images/general/1277.jpg" alt="Girl Reading" class="girl-image">
             </div>
             <div class="content-container">
                 <h1>Read, Learn, Grow - Anytime, Anywhere</h1>
@@ -29,16 +23,10 @@
         </div>
     </div>
     <script>
-        // document.addEventListener('DOMContentLoaded', function() {
-        //     const preloader = document.getElementById('preloader');
-        //     const getStartedContent = document.getElementById('get-started-content');
-        //     const video = document.getElementById('preloader-video');
-
-        //     video.onended = function() {
-        //         preloader.style.display = 'none';
-        //         getStartedContent.style.display = 'block';
-        //     };
-        // });
+        document.addEventListener('DOMContentLoaded', function() {
+            const getStartedContent = document.getElementById('get-started-content');
+            getStartedContent.style.display = 'block';
+        });
 
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/service-worker.js')
