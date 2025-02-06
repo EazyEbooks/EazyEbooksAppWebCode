@@ -1,0 +1,20 @@
+{
+    "name": "EazyEbooks",
+    "short_name": "EazyEbooks",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#006bff",
+    "icons": [
+        {
+            "src": "/static/icons/EEappicon192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/icons/EEappicon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
