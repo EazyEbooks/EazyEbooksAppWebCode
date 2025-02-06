@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="manifest" href="/static/manifest.json"> -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link rel="stylesheet" href="../static/css/profile-settings.css">
@@ -19,40 +20,22 @@
                 <p class="full-name">{{full_name}}</p>
                 <p class="student">Student</p>
                 <p class="email-display">{{email}}</p>
-                <!-- <p class="profile-para">Welcome to Profile Settings! Here, you can easily edit and manage your personal information, update preferences, and keep your profile up to date.</p> -->
                 <form action="/logout" method="post">
                     <button type="submit" class="log-out-button">Log out</button>
                 </form>
             </div>
             <div class="contact-and-security">
                 <div class="contact-container">
-                    <h2 class="section-heading">Contact information</h2>
+                    <h2 class="section-heading">Contact Information</h2>
                     <form action="/my-account/profile-settings" method="post" class="contact-form">
                         <div class="label-and-input">
                             <label for="phone-number">Phone Number</label>
                             <input type="text" name="phone-number" class="form-inp" value="{{phone_number}}">
                         </div>
-
-
                         <div class="label-and-input">
                             <label for="contact-email">Contact Email</label>
                             <input type="email" name="contact-email" class="form-inp" value="{{contact_email}}">
                         </div>
-
-                        <div class="label-and-input hidden">
-                            <label for="name">Full Name</label>
-                            <input type="text" name="name" id="" class="form-inp" value="{{full_name}}">
-                        </div>
-    
-                        <div class="label-and-input hidden">
-                            <label for="institute">Institute</label>
-                            <input type="text" name="institute" class="form-inp" value="{{institute}}">
-                        </div>
-                        <div class="label-and-input hidden">
-                            <label for="general-info">General Info</label>
-                            <textarea name="general-info" class="general-info-textarea" rows="10" cols="10">{{ general_info }}</textarea>
-                        </div>
-
                         <button type="submit" class="form-btn">Update</button>
                     </form>
                 </div>
@@ -69,33 +52,19 @@
                 </div>
             </div>
             <div class="about-yourself-container">
-                <h2 class="section-heading">About yourself</h2>
+                <h2 class="section-heading">About Yourself</h2>
                 <form action="/my-account/profile-settings" class="profile-settings-form" method="post">
                     <div class="label-and-input">
                         <label for="name">Full Name</label>
-                        <input type="text" name="name" id="" class="form-inp" value="{{full_name}}">
+                        <input type="text" name="name" class="form-inp" value="{{full_name}}">
                     </div>
-
                     <div class="label-and-input">
                         <label for="institute">Institute</label>
                         <input type="text" name="institute" class="form-inp" value="{{institute}}">
                     </div>
-
                     <label for="general-info">General Info</label>
                     <textarea name="general-info" class="general-info-textarea" rows="10" cols="10">{{ general_info }}</textarea>
-
-                    <div class="label-and-input hidden">
-                        <label for="phone-number">Phone Number</label>
-                        <input type="text" name="phone-number" class="form-inp" value="{{phone_number}}">
-                    </div>
-
-
-                    <div class="label-and-input hidden">
-                        <label for="contact-email">Contact Email</label>
-                        <input type="email" name="contact-email" class="form-inp" value="{{contact_email}}">
-                    </div>
-        
-                    <button class="form-btn">Save changes</button>
+                    <button class="form-btn">Save Changes</button>
                 </form>
             </div>
         </div>
@@ -108,9 +77,6 @@
             <li class="bottom-navbar-list-element">
                 <a href="/marketplace" class="bottom-navbar-link"><ion-icon name="cart-outline" class="bottom-nav-icon"></ion-icon></a>
             </li>
-            <!-- <li class="bottom-navbar-list-element">
-                <a href="" class="bottom-navbar-link"><ion-icon name="book-outline" class="bottom-nav-icon"></ion-icon></a>
-            </li> -->
             <li class="bottom-navbar-list-element">
                 <a href="/my-orders" class="bottom-navbar-link"><ion-icon name="list-outline" class="bottom-nav-icon"></ion-icon></a>
             </li>
@@ -122,5 +88,16 @@
             </li>
         </ul>
     </div>
+    <!-- <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/static/js/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+    </script> -->
 </body>
 </html>

@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Started</title>
+    <link rel="manifest" href="/static/manifest.json">
+    <title>EazyEbooks</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/get-started.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <div id="preloader">
@@ -37,6 +39,16 @@
                 getStartedContent.style.display = 'block';
             };
         });
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
     </script>
 </body>
 </html>
