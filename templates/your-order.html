@@ -6,7 +6,12 @@
     <meta name="google-adsense-account" content="ca-pub-8875422219223826">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/your-order.css') }}">
+    <style>
+        /* Critical CSS */
+        body{font-family:'Inter',sans-serif;margin:0;padding:0;background-color:#f4f4f4}.header{padding:1rem 2rem;text-align:center;display:flex;justify-content:space-between;align-items:center;background-color:#006bff;color:white}.logo-text{margin:0;font-size:2.4rem;text-transform:uppercase}.logo-fst-letter{font-size:3.6rem;color:#0056cc}.main-nav{display:flex;align-items:center;position:relative;width:auto}.hamburger-menu{display:none;cursor:pointer;font-size:2.4rem}.nav-list{display:flex;list-style:none;gap:2rem;align-items:center}.nav-list li a{text-decoration:none;color:white;text-align:center;padding:0.8rem 1.6rem;border-radius:5px;transition:background-color 0.3s}.nav-list li a:hover,.nav-list li a:active{background-color:#0056cc}.nav-list.show{display:flex;flex-direction:column;width:100%;background-color:#006bff;box-shadow:0 4px 8px rgba(0,0,0,0.1);padding:0;position:absolute;top:100%;left:0;z-index:1000}.nav-list.show li{width:100%}.nav-list.show li a{display:block;padding:1.2rem 0;width:100%;text-align:center;background-color:#006bff;border-bottom:1px solid #0056cc}.nav-list.show li a:hover,.nav-list.show li a:active{background-color:#0056cc}.orders-heading{text-align:center;color:#333;font-size:3.6rem;margin:40px 0}.orders-container{overflow-x:auto}.orders-table{max-width:100%;border-collapse:collapse;margin:0 auto;box-shadow:0 2px 4px rgba(0,0,0,0.1)}.orders-table thead tr th{font-size:1.1rem}.orders-table tbody tr td{font-size:1.1rem}.orders-table th,.orders-table td{padding:12px 15px;border:1px solid #ddd;text-align:left}.orders-table th{background-color:#006bff;color:white;text-transform:uppercase}.orders-table tr:nth-child(even){background-color:#f9f9f9}.orders-table tr:hover{background-color:#f1f1f1}.order-details{display:none}.order-details.show{display:table-row}.details-content{padding:10px;background-color:#f9f9f9;border:1px solid #ddd}.btn-details{background-color:#006bff;color:white;border:none;padding:8px 16px;border-radius:5px;cursor:pointer;transition:background-color 0.3s}.btn-details:hover{background-color:#0056cc}@media (max-width:768px){.hamburger-menu{display:block}.nav-list{display:none}.nav-list.show{display:flex;flex-direction:column;width:100%;background-color:#006bff;box-shadow:0 4px 8px rgba(0,0,0,0.1);padding:0;position:absolute;top:100%;left:0;z-index:1000}.nav-list.show li{width:100%}.nav-list.show li a{display:block;padding:1.2rem 0;width:100%;text-align:center;background-color:#006bff;border-bottom:1px solid #0056cc}.nav-list.show li a:hover,.nav-list.show li a:active{background-color:#0056cc}.orders-table th,.orders-table td{padding:8px 10px}.orders-table th{font-size:1.4rem}.orders-table td{font-size:1.2rem}.btn-details{padding:6px 12px;font-size:1.2rem}}
+    </style>
+    <link rel="stylesheet" href="/static/css/your-order.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/static/css/your-order.css"></noscript>
     <link rel="stylesheet" href="../static/css/home.css">
     <link rel="stylesheet" href="../static/css/responsive.css">
     <title>My Orders</title>
@@ -14,6 +19,14 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
+    <header class="header">
+        <div class="back-button">
+            <a href="javascript:history.back()">
+                <ion-icon name="arrow-back-outline" class="back-icon"></ion-icon>
+            </a>
+            <div></div>
+        </div>
+    </header>
     <main id="main-content">
         <h1 class="orders-heading">My Orders</h1>
         <div class="orders-container">
@@ -81,9 +94,9 @@
             <li class="bottom-navbar-list-element">
                 <a href="/" class="bottom-navbar-link"><ion-icon name="home-outline" class="bottom-nav-icon"></ion-icon></a>
             </li>
-            <li class="bottom-navbar-list-element">
+            <!-- <li class="bottom-navbar-list-element">
                 <a href="/marketplace" class="bottom-navbar-link"><ion-icon name="cart-outline" class="bottom-nav-icon"></ion-icon></a>
-            </li>
+            </li> -->
             <!-- <li class="bottom-navbar-list-element">
                 <a href="" class="bottom-navbar-link"><ion-icon name="book-outline" class="bottom-nav-icon"></ion-icon></a>
             </li> -->

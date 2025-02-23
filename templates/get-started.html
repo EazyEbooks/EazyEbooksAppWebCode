@@ -9,12 +9,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <div id="get-started-content">
+    <div id="preloader">
+        <video id="preloader-video" autoplay muted>
+            <source src="../static/images/general/preloader.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div id="get-started-content" style="display: none;">
         <div class="container">
-            <div class="icon-container">
-                <i class="fas fa-book-reader fa-5x"></i>
-                <i class="fas fa-laptop fa-5x"></i>
-                <i class="fas fa-mobile-alt fa-5x"></i>
+            <div class="image-container">
+                <img src="../static/images/general/1277.jpg" alt="Girl Reading" class="girl-image">
             </div>
             <div class="content-container">
                 <h1>Read, Learn, Grow - Anytime, Anywhere</h1>
@@ -26,8 +30,14 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const preloader = document.getElementById('preloader');
             const getStartedContent = document.getElementById('get-started-content');
-            getStartedContent.style.display = 'block';
+            const video = document.getElementById('preloader-video');
+
+            video.onended = function() {
+                preloader.style.display = 'none';
+                getStartedContent.style.display = 'block';
+            };
         });
 
         if ('serviceWorker' in navigator) {
