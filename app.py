@@ -12,7 +12,7 @@ from resources.database.password_reset_link import blp as PasswordResetLinkBluep
 from resources.database.profile_settings import blp as ProfileSettingsBlueprint
 from resources.database.purchase_history import blp as PurchaseHistoryBlueprint
 from resources.database.user_order import blp as UserOrderBlueprint
-from resources.general.marketplace import blp as MarketplaceBlueprint
+# from resources.general.marketplace import blp as MarketplaceBlueprint
 from resources.database.payment_success import blp as PaymentSuccessBlueprint
 from resources.database.payment_failed import blp as PaymentFailedBlueprint
 from resources.database.verification import blp as VerificationBlueprint
@@ -21,7 +21,6 @@ from resources.general.get_started import blp as GetStartedBlueprint
 from resources.general.offline import blp as OfflineBlueprint
 from resources.general.manifest import blp as ManifestBlueprint
 from resources.general.service_worker import blp as ServiceWorkerBlueprint
-from resources.general.assetlinks import blp as AssetLinksBlueprint
 
 def factory_pattern(db_url=None):
     app = Flask(__name__)
@@ -53,7 +52,7 @@ def factory_pattern(db_url=None):
     api.register_blueprint(ProfileSettingsBlueprint)
     api.register_blueprint(PurchaseHistoryBlueprint)
     api.register_blueprint(UserOrderBlueprint)
-    api.register_blueprint(MarketplaceBlueprint)
+    #api.register_blueprint(MarketplaceBlueprint)
     api.register_blueprint(PaymentSuccessBlueprint)
     api.register_blueprint(PaymentFailedBlueprint)
     api.register_blueprint(VerificationBlueprint)
@@ -62,7 +61,6 @@ def factory_pattern(db_url=None):
     api.register_blueprint(OfflineBlueprint)
     api.register_blueprint(ManifestBlueprint)
     api.register_blueprint(ServiceWorkerBlueprint)
-    api.register_blueprint(AssetLinksBlueprint)
 
     @app.before_request
     def make_session_permanent():
